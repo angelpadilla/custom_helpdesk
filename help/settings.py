@@ -151,3 +151,36 @@ LOGIN_URL = '/login/'
 # HELPDESK_AUTO_SUBSCRIBE_ON_TICKET_RESPONSE = True
 
 HELPDESK_VIEW_A_TICKET_PUBLIC = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message} \n',
+            "style": "{",
+        },
+        'simple': {
+            'format': '{levelname} {asctime} {module} {message} \n',
+            "style": "{",
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': './log.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
