@@ -490,7 +490,7 @@ class Ticket(models.Model):
     queue = models.ForeignKey(
         Queue,
         on_delete=models.CASCADE,
-        verbose_name=_('Queue'),
+        verbose_name=_('Cola'),
     )
 
     created = models.DateTimeField(

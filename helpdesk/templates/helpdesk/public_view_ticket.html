@@ -1,9 +1,11 @@
 {% extends "helpdesk/public_base.html" %}{% load i18n humanize %}
 {% load static %}
-{% block helpdesk_title %}{% trans "View a Ticket" %}{% endblock %}
+{% block helpdesk_title %}Ticket{% endblock %}
 
 {% block helpdesk_body %}
-
+<div class="alert alert-warning" role="alert">
+  <b>¡Importante!</b> Guarda el UUID y email de seguimiento para poder consultar el estado de tu ticket despues.
+</div>
 <table class="table table-hover table-bordered table-striped">
   <thead>
     <tr>
@@ -13,7 +15,11 @@
   <tbody>
     <tr>
       <th>UUID</th>
-      <td>{{ticket.secret_key}}</td>
+      <td><b>{{ticket.secret_key}}</b></td>
+    </tr>
+    <tr>
+      <th>{% trans "Submitter E-Mail" %}</th>
+      <td><b>{{ ticket.submitter_email }}</b></td>
     </tr>
     <tr>
       <th>Cola/departamento</th>
@@ -39,10 +45,7 @@
         </tr>
     {% endif %}
 
-    <tr>
-        <th>{% trans "Submitter E-Mail" %}</th>
-        <td>{{ ticket.submitter_email }}</td>
-    </tr>
+   
 
     <tr>
         <th>{% trans "Priority" %}</th>
